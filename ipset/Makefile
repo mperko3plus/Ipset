@@ -29,3 +29,12 @@ obj-$(CONFIG_IP_SET_HASH_NETPORTNET) += ip_set_hash_netportnet.o
 
 # list types
 obj-$(CONFIG_IP_SET_LIST_SET) += ip_set_list_set.o
+
+
+KVER ?= $(shell uname -r)
+
+all:
+	make -C /lib/modules/$(KVER)/build M=$(PWD) modules
+
+clean:
+	make -C /lib/modules/$(KVER)/build M=$(PWD) clean
